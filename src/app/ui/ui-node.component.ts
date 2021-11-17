@@ -45,7 +45,11 @@ export class UiNodeComponent implements OnInit {
     }
 
     applyNameChange() {
-        this.node.name = this.tempFileName;
+        if (this.tempFileName == null || this.tempFileName.trim() == '') {
+            this.cancelNameChange();
+            return;
+        }
+        this.node.name = this.tempFileName.trim();
         this.editing = false;
     }
 
