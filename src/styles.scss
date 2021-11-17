@@ -1,1 +1,50 @@
 /* You can add global styles to this file, and also import other style files */
+
+.main-container {
+    width: 800px;
+    margin-top: 20px;
+    border: 1px solid #CCC;
+    height: 400px;
+    overflow: auto;
+}
+
+.node-container {
+    width: 200px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+
+.node-container-stretched {
+    align-items: stretched;
+}
+
+.node-container-start {
+    align-items: start;
+}
+
+.node-flex {
+    flex: 1 0 100px;
+}
+
+.node-margin-flex {
+    flex: 1 0 10px;
+    border-bottom: 1px solid;
+}
+
+.node-file-icon {
+    width: 20px;
+}
+
+.node-icon-button {
+    width: 10px;
+}
+
+.node-top-gap {
+    margin-top: 10px;
+}
+
+.node-left-gap {
+    margin-left: 10px;
+}

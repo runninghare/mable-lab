@@ -1,0 +1,15 @@
+
+
+
+<div class="main-container">
+    <button (click)="addNode()">Add Node</button>
+
+    <div *ngFor="let child of nodes; let i = index" class="node-container node-container-start" style="border-left: 1px solid; margin-left: 5px">
+        <div class="node-margin-flex" style="margin-top: 20px"></div><ui-node class="node-top-gap" [node]="child" (remove)="removeNode(i)"></ui-node>
+    </div>
+    
+</div>
+
+<pre class="main-container">
+{{jsonResult}}
+</pre>

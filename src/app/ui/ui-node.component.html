@@ -1,0 +1,28 @@
+<div *ngIf="!editing" class="node-container" (mouseover)="mouseover = true" (mouseleave)="mouseover = false">
+
+    <ng-container *ngIf="fileTypeDefined">
+        <img class="node-file-icon"
+        [src]="node.type == 'file' ? 'assets/resources/file-regular.svg' : 'assets/resources/folder-open-regular.svg'" alt="My Happy SVG" />
+        <div class="node-flex">{{node?.name}}</div>
+        <ng-container *ngIf="mouseover">
+            <button *ngIf="node.type == 'folder'" (click)="addNode()"><img class="node-icon-button" src="assets/resources/Add-New-256.png"/></button>
+            <button (click)="removeNode()"><img class="node-icon-button" src="assets/resources/Garbage-Closed-256.png"/></button>        
+        </ng-container>
+    </ng-container>
+
+    <div *ngIf="!fileTypeDefined" class="node-container">
+       <button (click)="node.type = 'file'; editing = true;">Add File</button> 
+       <button (click)="node.type = 'folder'; editing = true;">Add Folder</button> 
+    </div>
+
+</div>
+
+<div *ngIf="editing" class="node-container" style="margin-left: 10px">
+    <input class="node-flex" type="text" [(ngModel)]="tempFileName" (keyup.enter)="applyNameChange()">
+    <button (click)="applyNameChange()"><img class="node-icon-button" src="assets/resources/Check-256.png"/></button>
+    <button (click)="cancelNameChange()"><img class="node-icon-button" src="assets/resources/Close-256.png"/></button>
+</div>
+
+<div *ngFor="let child of node.children; let i = index" class="node-container node-container-start" style="border-left: 1px solid; margin-left: 5px">
+    <div class="node-margin-flex" style="margin-top: 20px"></div><ui-node class="node-top-gap" [node]="child" (remove)="removeChildNode(i)"></ui-node>
+</div>
